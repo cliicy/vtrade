@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+{% block title %}极客学院{% endblock %}
+{% import "bootstrap/wtf.html" as wtf %}
+
+{% block content %}
+<div class="container" style="background-color:#FFFFFF;">
+    <div class="page-header">
+        <h1>网页远控</h1>
+    </div>
+    <form action="" method="post" name="submit">
+        {{ form.csrf_token }}
+        <div class="col-md-12">
+            <div class="col-md-6" id="command">
+                <div class="col-md-12">
+                    <p>
+                        {{ form.commandInConfig(class="col-md-12", value="输入命令") }}
+                    </p>
+                </div>
+                <div class="col-md-12">
+                    {{ form.commandInWrite(class="col-md-12", cols="50", rows="10")|safe }}
+                </div>
+            </div>
+            <div class="col-md-6" id="login">
+                <div class="col-md-6">
+                    {{ form.userName.label(class="col-md-4") }}{{ form.userName(class="col-md-8") }}
+                    {{ form.password.label(class="col-md-4") }}{{ form.password(class="col-md-8", type="password") }}
+                    {{ form.sendCommand(class="btn btn-default", type="submit",id="submit") }}{{ form.clearCommand(class="btn btn-default", type="Reset") }}
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+{% endblock %}
